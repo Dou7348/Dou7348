@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С 8 Марта! 🌸✨</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #ffe6f2, #fff0f5);
+        }
+        .section {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            display: none;
+        }
+        .hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .heart {
+            position: absolute;
+            color: #ff4d79;
+            font-size: 30px;
+            animation: float 6s infinite ease-in-out, rotate 4s infinite;
+            filter: drop-shadow(0 0 5px rgba(255, 77, 121, 0.5));
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-20vh) scale(1.2); opacity: 0; }
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .blink-heart {
+            position: absolute;
+            color: #ff4d79;
+            font-size: 20px;
+            animation: blink 2s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        .star {
+            position: absolute;
+            color: #ffd700;
+            font-size: 15px;
+            animation: fallStar 4s linear forwards;
+        }
+        @keyframes fallStar {
+            0% { transform: translateY(-20vh); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        .main-section {
+            background: linear-gradient(120deg, #ffe6f2, #fff0f5);
+            color: #d63384;
+            padding: 60px 20px;
+            position: relative;
+        }
+        .quote {
+            font-size: 24px;
+            color: #d63384;
+            text-align: center;
+            margin: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .main-section h1 {
+            font-size: 50px;
+            text-shadow: 2px 2px 10px rgba(214, 51, 132, 0.3);
+            animation: fadeIn 2s ease-in-out;
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .main-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            margin: 20px auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(214, 51, 132, 0.2);
+            width: 70%;
+            font-size: 24px;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(5px);
+            animation: slideUp 1.5s ease-out;
+        }
+        @keyframes slideUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .flowers {
+            position: absolute;
+            width: 100%;
+            height: 60%;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .flower {
+            position: absolute;
+            font-size: 40px;
+            color: #ff85a1;
+            animation: sway 8s infinite ease-in-out;
+        }
+        @keyframes sway {
+            0% { transform: translateX(0) rotate(0deg); }
+            50% { transform: translateX(20px) rotate(10deg); }
+            100% { transform: translateX(0) rotate(0deg); }
+        }
+        .cursor-petal {
+            position: absolute;
+            font-size: 20px;
+            color: #ff4d79;
+            pointer-events: none;
+            animation: fallCursorPetal 3s ease-out forwards;
+        }
+        @keyframes fallCursorPetal {
+            0% { opacity: 1; transform: translate(0, 0) rotate(0deg); }
+            100% { opacity: 0; transform: translate(0, 100px) rotate(180deg); }
+        }
+        .cloud {
+            position: absolute;
+            font-size: 50px;
+            color: rgba(255, 255, 255, 0.7);
+            animation: drift 20s linear infinite;
+        }
+        @keyframes drift {
+            0% { transform: translateX(-100vw); }
+            100% { transform: translateX(100vw); }
+        }
+        .cards-section {
+            background: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+            color: white;
+            padding: 60px 20px;
+            position: relative;
+        }
+        .big-heart {
+            font-size: 200px;
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.1;
+            animation: pulse 3s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.1); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 100px;
+            z-index: 2;
+            position: relative;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+            width: 280px;
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 77, 121, 0.4);
+        }
+        .card:hover::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: calc(100% + 40px);
+            height: calc(100% + 40px);
+            background: radial-gradient(circle, rgba(255, 77, 121, 0.3), transparent 70%);
+            z-index: -1;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            0% { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+        .card h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #d63384;
+        }
+        .card-text {
+            display: none;
+            font-size: 16px;
+            color: #555;
+            margin-top: 15px;
+            animation: fadeInText 0.5s ease-in;
+        }
+        .envelope {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ff85a1;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+            cursor: pointer;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+        }
+        .envelope.open {
+            transform: perspective(600px) rotateX(90deg);
+            transform-origin: top;
+            opacity: 0;
+        }
+        .card-collage {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid #ff4d79;
+        }
+        .card:nth-child(1) .card-collage { background: linear-gradient(135deg, #ff85a1, #d63384); }
+        .card:nth-child(2) .card-collage { background: linear-gradient(135deg, #ffb6c1, #ff69b4); }
+        .card:nth-child(3) .card-collage { background: linear-gradient(135deg, #ffdead, #ff4500); }
+        .card:nth-child(4) .card-collage { background: linear-gradient(135deg, #e6e6fa, #9370db); }
+        .card:nth-child(5) .card-collage { background: linear-gradient(135deg, #98fb98, #32cd32); }
+        .card:nth-child(6) .card-collage { background: linear-gradient(135deg, #87cefa, #1e90ff); }
+        .teacher-card .card-collage { background: linear-gradient(135deg, #fff0f5, #ff69b4); }
+        .card-collage::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            z-index: 1;
+        }
+        .card-collage .decoration {
+            position: absolute;
+            font-size: 40px;
+            color: #ff85a1;
+            z-index: 3;
+        }
+        .card-collage .animated-emoji {
+            position: absolute;
+            font-size: 60px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: sway 3s infinite;
+            z-index: 2;
+        }
+        @keyframes fadeInText {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 3;
+        }
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #fff, rgba(255, 255, 255, 0));
+            border-radius: 50%;
+            animation: sparkleFade 1s ease-out forwards;
+        }
+        @keyframes sparkleFade {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        .hover-flower {
+            position: absolute;
+            font-size: 20px;
+            color: #ff85a1;
+            animation: flowerPop 0.8s ease-out forwards;
+        }
+        @keyframes flowerPop {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+        .button {
+            margin-top: 60px;
+            padding: 15px 40px;
+            font-size: 20px;
+            background: linear-gradient(45deg, #ff4d79, #d63384);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 77, 121, 0.5);
+            z-index: 2;
+            position: relative;
+        }
+        .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(255, 77, 121, 0.7);
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 998;
+            transition: opacity 0.5s ease;
+        }
+        .bouquet {
+            display: none;
+            font-size: 250px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 999;
+            color: #ff4d79;
+            filter: drop-shadow(0 0 15px rgba(255, 77, 121, 0.8));
+            animation: explode 1s ease-in-out forwards;
+        }
+        @keyframes explode {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+        .bouquet-particle {
+            position: fixed;
+            font-size: 30px;
+            color: #ff85a1;
+            animation: burst 1.5s ease-out forwards;
+        }
+        @keyframes burst {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+        }
+        .teacher-card {
+            z-index: 10;
+            background: linear-gradient(135deg, #fff0f5, #ffe6f2);
+        }
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff4d79;
+            border-radius: 50%;
+            animation: fall 5s linear forwards;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .timer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(214, 51, 132, 0.2);
+            font-size: 18px;
+            color: #d63384;
+            z-index: 10;
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+        .modal-content {
+            background: linear-gradient(135deg, #fff0f5, #ffe6f2);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.5s ease-out;
+            width: 450px;
+            max-width: 90%;
+            border: 2px solid #ff4d79;
+        }
+        @keyframes slideIn {
+            0% { transform: translateY(-100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .modal-content h2 {
+            color: #d63384;
+            font-size: 28px;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 5px rgba(214, 51, 132, 0.3);
+        }
+        .modal-content p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .modal-content .question {
+            margin: 25px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        .modal-content label {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            font-size: 16px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .modal-content label:hover {
+            color: #ff4d79;
+        }
+        .modal-content input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        .modal-content button {
+            padding: 12px 30px;
+            font-size: 18px;
+            background: linear-gradient(45deg, #ff4d79, #d63384);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 77, 121, 0.5);
+        }
+        .modal-content button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 77, 121, 0.7);
+        }
+        .modal-content .error {
+            color: #ff0000;
+            font-weight: bold;
+            display: none;
+            margin-top: 15px;
+            animation: shake 0.5s;
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+        .forecast-section {
+            background: linear-gradient(135deg, #fff0f5, #e6e6fa);
+            padding: 60px 20px;
+            position: relative;
+        }
+        .butterfly {
+            position: absolute;
+            font-size: 25px;
+            color: #ff85a1;
+            animation: fly 8s infinite ease-in-out;
+        }
+        @keyframes fly {
+            0% { transform: translateX(-10vw) translateY(100vh) rotate(0deg); }
+            50% { transform: translateX(50vw) translateY(50vh) rotate(180deg); }
+            100% { transform: translateX(100vw) translateY(0vh) rotate(360deg); }
+        }
+        .petal {
+            position: absolute;
+            font-size: 20px;
+            color: #ff4d79;
+            animation: fallPetal 6s linear forwards;
+        }
+        @keyframes fallPetal {
+            0% { transform: translateY(-20vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        .twinkle-star {
+            position: absolute;
+            font-size: 15px;
+            color: #ffd700;
+            animation: twinkle 2s infinite;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        .pop-heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff4d79;
+            animation: popUp 1s ease-out forwards;
+        }
+        @keyframes popUp {
+            0% { transform: translateY(0) scale(0); opacity: 1; }
+            100% { transform: translateY(-50px) scale(1.5); opacity: 0; }
+        }
+        @media (max-width: 768px) {
+            .main-card {
+                width: 90%;
+                font-size: 20px;
+            }
+            .cards-container {
+                flex-direction: column;
+            }
+            .card {
+                width: 85%;
+            }
+            .big-heart {
+                font-size: 150px;
+            }
+            .timer {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+            .modal-content {
+                padding: 20px;
+                width: 85%;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="modal" id="testModal">
+        <div class="modal-content">
+            <h2>Тест перед 8 Марта! 🌸</h2>
+            <p>Ответь на 3 вопроса, чтобы продолжить!</p>
+            <div class="question">
+                <p>1. Какой цветок чаще всего дарят на 8 марта?</p>
+                <label><input type="radio" name="q1" value="a"> а) Роза</label>
+                <label><input type="radio" name="q1" value="b"> б) Тюльпан</label>
+                <label><input type="radio" name="q1" value="c"> в) Кактус</label>
+            </div>
+            <div class="question">
+                <p>2. Какой цвет символизирует 8 марта?</p>
+                <label><input type="radio" name="q2" value="a"> а) Зелёный</label>
+                <label><input type="radio" name="q2" value="b"> б) Жёлтый</label>
+                <label><input type="radio" name="q2" value="c"> в) Розовый</label>
+            </div>
+            <div class="question">
+                <p>3. Что обычно делают 8 марта?</p>
+                <label><input type="radio" name="q3" value="a"> а) Дарят подарки женщинам</label>
+                <label><input type="radio" name="q3" value="b"> б) Ловят рыбу</label>
+                <label><input type="radio" name="q3" value="c"> в) Смотрят футбол</label>
+            </div>
+            <button onclick="checkTest()">Проверить</button>
+            <p class="error" id="errorMessage">Ответь правильно на все вопросы!</p>
+        </div>
+    </div>
+
+    <canvas id="particles"></canvas>
+    <div class="timer" id="countdown"></div>
+    <div class="section main-section">
+        <div class="hearts-container"></div>
+        <div class="flowers"></div>
+        <div class="quote" id="randomQuote"></div>
+        <h1>С 8 Марта, девочки! 🌸💖</h1>
+        <div class="main-card" id="mainCard">
+            <pre style="font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: bold; white-space: pre-wrap;">Дорогие дамы! 🎓 ✨ Этот год для вас особенный, ведь впереди вас ждут новые возможности и важные решения. 🌸 Пусть этот день принесёт вам радость, уверенность в своих силах и вдохновение! 💖 Желаем вам достичь всех ваших целей. 🌟 Оставайтесь такими же прекрасными, умными и талантливыми! 💐 😊</pre>
+        </div>
+    </div>
+
+    <div class="section cards-section">
+        <div class="big-heart">💖</div>
+        <div class="card teacher-card" onclick="openEnvelope(this)">
+            <div class="envelope">
+                <h2>Лучшая учительница</h2>
+            </div>
+            <div class="card-collage">
+                <div class="animated-emoji">🌷</div>
+                <div class="decoration" style="top: 10px; left: 10px;">🌸</div>
+                <div class="decoration" style="bottom: 10px; right: 10px;">💖</div>
+                <div class="sparkles"></div>
+            </div>
+            <div class="card-text">С 8 Марта! Желаем вам здоровья, счастья и успехов в вашем нелёгком труде. Спасибо за всё, что вы для нас делаете!</div>
+        </div>
+        <div class="cards-container">
+            <div class="card" onclick="openEnvelope(this)">
+                <div class="envelope">
+                    <h2>Ира Доренская</h2>
+                </div>
+                <div class="card-collage">
+                    <div class="animated-emoji">🌸</div>
+                    <div class="decoration" style="top: 20px; left: 20px;">🌺</div>
+                    <div class="decoration" style="bottom: 20px; right: 20px;">💕</div>
+                    <div class="sparkles"></div>
+                </div>
+                <div class="card-text">Ира, пусть каждый день приносит радость и вдохновение! С 8 марта!</div>
+            </div>
+            <div class="card" onclick="openEnvelope(this)">
+                <div class="envelope">
+                    <h2>Полина Козина</h2>
+                </div>
+                <div class="card-collage">
+                    <div class="animated-emoji">🌼</div>
+                    <div class="decoration" style="top: 10px; left: 10px;">🌸</div>
+                    <div class="decoration" style="bottom: 10px; right: 10px;">💖</div>
+                    <div class="sparkles"></div>
+                </div>
+                <div class="card-text">Полина, желаю счастья, улыбок и ярких моментов в жизни! С праздником!</div>
+            </div>
+            <div class="card" onclick="openEnvelope(this)">
+                <div class="envelope">
+                    <h2>Валя Караманян</h2>
+                </div>
+                <div class="card-collage">
+                    <div class="animated-emoji">🌹</div>
+                    <div class="decoration" style="top: 20px; left: 20px;">🌺</div>
+                    <div class="decoration" style="bottom: 20px; right: 20px;">💕</div>
+                    <div class="sparkles"></div>
+                </div>
+                <div class="card-text">Валя, пусть весна дарит тебе тепло и счастье! С 8 марта!</div>
+            </div>
+            <div class="card" onclick="openEnvelope(this)">
+                <div class="envelope">
+                    <h2>Виктория Стрельникова</h2>
+                </div>
+                <div class="card-collage">
+                    <div class="animated-emoji">🌺</div>
+                    <div class="decoration" style="top: 10px; left: 10px;">🌸</div>
+                    <div class="decoration" style="bottom: 10px; right: 10px;">💖</div>
+                    <div class="sparkles"></div>
+                </div>
+                <div class="card-text">Вика, желаю тебе всегда быть на высоте и сиять! С праздником!</div>
+            </div>
+            <div class="card" onclick="openEnvelope(this)">
+                <div class="envelope">
+                    <h2>София Чепурова</h2>
+                </div>
+                <div class="card-collage">
+                    <div class="animated-emoji">🌻</div>
+                    <div class="decoration" style="top: 20px; left: 20px;">🌺</div>
+                    <div class="decoration" style="bottom: 20px; right: 20px;">💕</div>
+                    <div class="sparkles"></div>
+                </div>
+                <div class="card-text">София, пусть мечты сбываются, а жизнь радует яркими событиями! С 8 марта!</div>
+            </div>
+            <div class="card" onclick="openEnvelope(this)">
+                <div class="envelope">
+                    <h2>Дарья Деревянченко</h2>
+                </div>
+                <div class="card-collage">
+                    <div class="animated-emoji">🌷</div>
+                    <div class="decoration" style="top: 10px; left: 10px;">🌸</div>
+                    <div class="decoration" style="bottom: 10px; right: 10px;">💖</div>
+                    <div class="sparkles"></div>
+                </div>
+                <div class="card-text">Дарья, желаю здоровья, удачи и море положительных эмоций! С праздником!</div>
+            </div>
+        </div>
+        <button class="button" onclick="showBouquet()">🎁 Сюрприз</button>
+        <div class="overlay" id="overlay"></div>
+        <div class="bouquet" id="bouquet">💐</div>
+    </div>
+
+    <div class="section forecast-section">
+        <h2 style="color: #d63384; z-index: 2;">Весенний прогноз 🌸</h2>
+        <button class="button" onclick="generateForecast()">Узнать!</button>
+        <p id="forecast" style="color: #555; font-size: 18px; margin-top: 20px; z-index: 2;"></p>
+    </div>
+
+    <script>
+        function checkTest() {
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const q3 = document.querySelector('input[name="q3"]:checked');
+            const errorMessage = document.getElementById('errorMessage');
+            const modal = document.getElementById('testModal');
+            const sections = document.querySelectorAll('.section');
+
+            if (q1 && q2 && q3 && q1.value === 'b' && q2.value === 'c' && q3.value === 'a') {
+                modal.style.display = 'none';
+                sections.forEach(section => section.style.display = 'flex');
+            } else {
+                errorMessage.style.display = 'block';
+                setTimeout(() => errorMessage.style.display = 'none', 2000);
+            }
+        }
+
+        document.querySelectorAll('.card').forEach(card => {
+            const sparklesContainer = card.querySelector('.sparkles');
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.style.left = x + 'px';
+                sparkle.style.top = y + 'px';
+                sparklesContainer.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 1000);
+
+                const flower = document.createElement('div');
+                flower.classList.add('hover-flower');
+                flower.innerHTML = '🌸';
+                flower.style.left = x + 'px';
+                flower.style.top = y + 'px';
+                sparklesContainer.appendChild(flower);
+                setTimeout(() => flower.remove(), 800);
+            });
+        });
+
+        function updateCountdown() {
+            const now = new Date();
+            const march8 = new Date(now.getFullYear(), 2, 8, 0, 0, 0);
+            if (now > march8) march8.setFullYear(now.getFullYear() + 1);
+
+            const diff = march8 - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerText = 
+                `До 8 марта: ${days} д ${hours} ч ${minutes} м ${seconds} с`;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let particlesArray = [];
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 5 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.2) this.size -= 0.1;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(255, 77, 121, 0.8)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            for (let i = 0; i < 100; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+                if (particlesArray[i].size <= 0.2) {
+                    particlesArray.splice(i, 1);
+                    i--;
+                    particlesArray.push(new Particle());
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        initParticles();
+        animateParticles();
+
+        function createHearts() {
+            const container = document.querySelector('.hearts-container');
+            for (let i = 0; i < 20; i++) {
+                let heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 4 + 2) + 's';
+                heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                container.appendChild(heart);
+                setTimeout(() => heart.remove(), 6000);
+            }
+            for (let i = 0; i < 5; i++) {
+                let blinkHeart = document.createElement('div');
+                blinkHeart.classList.add('blink-heart');
+                blinkHeart.innerHTML = '💗';
+                blinkHeart.style.left = Math.random() * 100 + 'vw';
+                blinkHeart.style.top = Math.random() * 100 + 'vh';
+                container.appendChild(blinkHeart);
+                setTimeout(() => blinkHeart.remove(), 4000);
+            }
+            for (let i = 0; i < 3; i++) {
+                let star = document.createElement('div');
+                star.classList.add('star');
+                star.innerHTML = '⭐';
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                container.appendChild(star);
+                setTimeout(() => star.remove(), 4000);
+            }
+        }
+        setInterval(createHearts, 800);
+
+        function createFlowers() {
+            const container = document.querySelector('.flowers');
+            for (let i = 0; i < 10; i++) {
+                let flower = document.createElement('div');
+                flower.classList.add('flower');
+                flower.innerHTML = '🌸';
+                flower.style.left = Math.random() * 100 + 'vw';
+                flower.style.top = Math.random() * 100 + '%';
+                container.appendChild(flower);
+            }
+        }
+        createFlowers();
+        document.addEventListener('mousemove', (e) => {
+            document.querySelectorAll('.flower').forEach(flower => {
+                const speed = 0.05;
+                const x = (window.innerWidth / 2 - e.pageX) * speed;
+                const y = (window.innerHeight / 2 - e.pageY) * speed;
+                flower.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        function showBouquet() {
+            const bouquet = document.getElementById('bouquet');
+            const overlay = document.getElementById('overlay');
+            
+            overlay.style.opacity = '1';
+            bouquet.style.display = 'block';
+
+            for (let i = 0; i < 20; i++) {
+                let particle = document.createElement('div');
+                particle.classList.add('bouquet-particle');
+                particle.innerHTML = '🌸';
+                particle.style.left = '50vw';
+                particle.style.top = '50vh';
+                particle.style.setProperty('--x', `${(Math.random() - 0.5) * 400}px`);
+                particle.style.setProperty('--y', `${(Math.random() - 0.5) * 400}px`);
+                document.body.appendChild(particle);
+                setTimeout(() => particle.remove(), 1500);
+            }
+
+            for (let i = 0; i < 200; i++) {
+                let confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.background = `hsl(${Math.random() * 360}, 70%, 50%)`;
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
+
+            setTimeout(() => {
+                bouquet.style.display = 'none';
+                overlay.style.opacity = '0';
+            }, 4000);
+        }
+
+        function openEnvelope(card) {
+            const envelope = card.querySelector('.envelope');
+            const cardText = card.querySelector('.card-text');
+            if (envelope) {
+                envelope.classList.add('open');
+                setTimeout(() => {
+                    envelope.style.display = 'none';
+                    cardText.style.display = 'block';
+                }, 600);
+            } else {
+                cardText.style.display = cardText.style.display === 'block' ? 'none' : 'block';
+            }
+        }
+
+        const quotes = [
+            "Весна — время новых начал!",
+            "Ты прекрасна, как первый цветок!",
+            "С 8 Марта, сияй ярче всех!"
+        ];
+        let quoteIndex = 0;
+        document.getElementById('randomQuote').innerText = quotes[quoteIndex];
+        setInterval(() => {
+            quoteIndex = (quoteIndex + 1) % quotes.length;
+            document.getElementById('randomQuote').innerText = quotes[quoteIndex];
+        }, 5000);
+
+        document.querySelector('.main-section').addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.8) {
+                const petal = document.createElement('div');
+                petal.classList.add('cursor-petal');
+                petal.innerHTML = '🌸';
+                petal.style.left = e.pageX + 'px';
+                petal.style.top = e.pageY + 'px';
+                document.querySelector('.main-section').appendChild(petal);
+                setTimeout(() => petal.remove(), 3000);
+            }
+        });
+
+        function createClouds() {
+            const container = document.querySelector('.main-section');
+            for (let i = 0; i < 5; i++) {
+                let cloud = document.createElement('div');
+                cloud.classList.add('cloud');
+                cloud.innerHTML = '☁️';
+                cloud.style.top = Math.random() * 30 + 'vh';
+                cloud.style.animationDuration = (Math.random() * 10 + 20) + 's';
+                cloud.style.zIndex = 0;
+                container.appendChild(cloud);
+            }
+        }
+        createClouds();
+
+        function createButterfliesAndPetals() {
+            const container = document.querySelector('.main-section');
+            for (let i = 0; i < 5; i++) {
+                let butterfly = document.createElement('div');
+                butterfly.classList.add('butterfly');
+                butterfly.innerHTML = '🦋';
+                butterfly.style.left = Math.random() * 100 + 'vw';
+                container.appendChild(butterfly);
+                setTimeout(() => butterfly.remove(), 8000);
+            }
+            for (let i = 0; i < 10; i++) {
+                let petal = document.createElement('div');
+                petal.classList.add('petal');
+                petal.innerHTML = '🌸';
+                petal.style.left = Math.random() * 100 + 'vw';
+                container.appendChild(petal);
+                setTimeout(() => petal.remove(), 6000);
+            }
+        }
+        setInterval(createButterfliesAndPetals, 3000);
+
+        function addTwinkleStars() {
+            const container = document.querySelector('.cards-section');
+            for (let i = 0; i < 8; i++) {
+                let star = document.createElement('div');
+                star.classList.add('twinkle-star');
+                star.innerHTML = '✨';
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                container.appendChild(star);
+            }
+        }
+        addTwinkleStars();
+
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('mousemove', (e) => {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                let heart = document.createElement('div');
+                heart.classList.add('pop-heart');
+                heart.innerHTML = '💖';
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+                button.appendChild(heart);
+                setTimeout(() => heart.remove(), 1000);
+            });
+        });
+
+        document.querySelector('.main-section h1').addEventListener('click', () => {
+            const surprise = document.createElement('div');
+            surprise.style.position = 'fixed';
+            surprise.style.top = '50%';
+            surprise.style.left = '50%';
+            surprise.style.transform = 'translate(-50%, -50%)';
+            surprise.style.fontSize = '100px';
+            surprise.style.color = '#ff4d79';
+            surprise.style.zIndex = '1000';
+            surprise.innerHTML = '🎉';
+            document.body.appendChild(surprise);
+            setTimeout(() => {
+                surprise.style.transition = 'all 1s ease-out';
+                surprise.style.opacity = '0';
+                surprise.style.transform = 'translate(-50%, -70%) scale(2)';
+                setTimeout(() => surprise.remove(), 1000);
+            }, 2000);
+        });
+
+        const forecasts = [
+            "Весна откроет перед тобой двери к новым достижениям и ярким моментам!",
+            "Тебя ждут неожиданные подарки судьбы и море позитива!",
+            "Твой путь озарится светом удачи и теплом близких сердец!",
+            "Впереди тебя ждет волна вдохновения и смелых идей!",
+            "Ты обретешь гармонию и силы для больших свершений!",
+            "Эта весна принесет тебе яркие краски и незабываемые впечатления!",
+            "Твои мечты начнут сбываться одна за другой!",
+            "Тебя окружат забота и поддержка на каждом шагу!",
+            "Весенний ветер принесет тебе удачу в делах и радость в душе!",
+            "Ты станешь магнитом для хороших новостей и приятных встреч!"
+        ];
+        function generateForecast() {
+            const forecast = document.getElementById('forecast');
+            forecast.textContent = forecasts[Math.floor(Math.random() * forecasts.length)];
+            forecast.style.animation = 'fadeInText 1s ease-in';
+        }
+    </script>
+</body>
+</html>
